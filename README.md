@@ -1,2 +1,2 @@
 # demos-as
-Demos of writing code using the GNU assembler
+Demos of writing code in GNU assembler language.
