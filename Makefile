@@ -16,6 +16,14 @@ SOURCES_NO_C=$(shell find src_no_c -name "*.s")
 OBJECTS_NO_C=$(addsuffix .o,$(basename $(SOURCES_NO_C)))
 BINARIES_NO_C=$(addsuffix .elf,$(basename $(SOURCES_NO_C)))
 
+SOURCES_32=$(shell find src_32 -name "*.S")
+OBJECTS_32=$(addsuffix .o,$(basename $(SOURCES_32)))
+BINARIES_32=$(addsuffix .elf,$(basename $(SOURCES_32)))
+
+SOURCES_64=$(shell find src_64 -name "*.S")
+OBJECTS_64=$(addsuffix .o,$(basename $(SOURCES_64)))
+BINARIES_64=$(addsuffix .elf,$(basename $(SOURCES_64)))
+
 ########
 # code #
 ########
@@ -29,7 +37,7 @@ Q:=@
 endif # DO_MKDBG
 
 # sources from the git perspective
-ALL:=$(BINARIES) $(BINARIES_NO_C)
+ALL:=$(BINARIES) $(BINARIES_NO_C) $(BINARIES_32) $(BINARIES_64)
 
 #########
 # rules #
@@ -56,6 +64,12 @@ debug:
 	$(info SOURCES_NO_C is $(SOURCES_NO_C))
 	$(info OBJECTS_NO_C is $(OBJECTS_NO_C))
 	$(info BINARIES_NO_C is $(BINARIES_NO_C))
+	$(info SOURCES_32 is $(SOURCES_32))
+	$(info OBJECTS_32 is $(OBJECTS_32))
+	$(info BINARIES_32 is $(BINARIES_32))
+	$(info SOURCES_64 is $(SOURCES_64))
+	$(info OBJECTS_64 is $(OBJECTS_64))
+	$(info BINARIES_64 is $(BINARIES_64))
 	$(info ALL is $(ALL))
 
 #################
@@ -77,3 +91,18 @@ $(BINARIES_NO_C): %.elf: %.o
 	$(info doing [$@])
 	$(Q)ld -o $@ $<
 
+$(OBJECTS_32): %.o: %.S
+	$(info doing [$@])
+	$(Q)gcc -static -m32 -c $< -o $@
+
+$(BINARIES_32): %.elf: %.o
+	$(info doing [$@])
+	$(Q)gcc -static -m32 -nostdlib -o $@ $<
+
+$(OBJECTS_64): %.o: %.S
+	$(info doing [$@])
+	$(Q)gcc -static -m64 -c $< -o $@
+
+$(BINARIES_64): %.elf: %.o
+	$(info doing [$@])
+	$(Q)gcc -static -m64 -nostdlib -o $@ $<
