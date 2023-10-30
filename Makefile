@@ -59,7 +59,7 @@ debug:
 	$(info ALL is $(ALL))
 
 #################
-# pettern rules #
+# pattern rules #
 #################
 $(OBJECTS): %.o: %.s
 	$(info doing [$@])
