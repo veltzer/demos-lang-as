@@ -44,7 +44,7 @@ ALL:=$(BINARIES) $(BINARIES_NO_C) $(BINARIES_32) $(BINARIES_64)
 #########
 .PHONY: all
 all: $(ALL)
-	$(info doing [$@])
+	@true
 
 .PHONY: clean
 clean:
