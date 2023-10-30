@@ -13,8 +13,8 @@ We compile this program with:
 
 */
 
-.global main
-main:
+.global _start
+_start:
 	# 1 is the number of the _exit(2) system call
 	mov $1, %eax
 	# 7 is the status we pass to the exit(2) system call
