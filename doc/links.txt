@@ -1,1 +1,2 @@
 https://cs.lmu.edu/~ray/notes/gasexamples/
+https://scottc130.medium.com/writing-your-first-x86-program-3fd2b33139d6

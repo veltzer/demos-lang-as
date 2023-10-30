@@ -20,8 +20,8 @@ You cannot compile with gcc just like this:
 Since gcc links with the standard library which defines the real _start symbol and
 and this will create link conflict.
 
-Maybe you can define your own 'main' symbol and manage to do that, I still have
-not tyied.
+Maybe you can define your own "main" symbol and manage to do that, I still have
+not tried.
 
 References:
 - https://scottc130.medium.com/writing-your-first-x86-program-3fd2b33139d6
