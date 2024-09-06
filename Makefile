@@ -3,7 +3,8 @@
 ##############
 # do you want to show the commands executed ?
 DO_MKDBG?=0
-
+# should we depend on the Makefile itself?
+DO_ALLDEP:=1
 
 #############
 # variables #
@@ -106,3 +107,10 @@ $(OBJECTS_64): %.o: %.S
 $(BINARIES_64): %.elf: %.o
 	$(info doing [$@])
 	$(Q)gcc -static -m64 -nostdlib -o $@ $<
+
+############
+# all deps #
+############
+ifeq ($(DO_ALLDEP),1)
+.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
+endif # DO_ALLDEP
