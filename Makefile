@@ -9,19 +9,19 @@ DO_ALLDEP:=1
 #############
 # variables #
 #############
-SOURCES=$(shell find src -name "*.s")
+SOURCES=$(shell find src -type f -and -name "*.s")
 OBJECTS=$(addsuffix .o,$(basename $(SOURCES)))
 BINARIES=$(addsuffix .elf,$(basename $(SOURCES)))
 
-SOURCES_NO_C=$(shell find src_no_c -name "*.s")
+SOURCES_NO_C=$(shell find src_no_c -type f -and -name "*.s")
 OBJECTS_NO_C=$(addsuffix .o,$(basename $(SOURCES_NO_C)))
 BINARIES_NO_C=$(addsuffix .elf,$(basename $(SOURCES_NO_C)))
 
-SOURCES_32=$(shell find src_32 -name "*.S")
+SOURCES_32=$(shell find src_32 -type f -and -name "*.S")
 OBJECTS_32=$(addsuffix .o,$(basename $(SOURCES_32)))
 BINARIES_32=$(addsuffix .elf,$(basename $(SOURCES_32)))
 
-SOURCES_64=$(shell find src_64 -name "*.S")
+SOURCES_64=$(shell find src_64 -type f -and -name "*.S")
 OBJECTS_64=$(addsuffix .o,$(basename $(SOURCES_64)))
 BINARIES_64=$(addsuffix .elf,$(basename $(SOURCES_64)))
 
