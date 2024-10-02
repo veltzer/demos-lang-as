@@ -108,9 +108,9 @@ $(BINARIES_64): %.elf: %.o
 	$(info doing [$@])
 	$(Q)gcc -static -m64 -nostdlib -o $@ $<
 
-############
-# all deps #
-############
+##########
+# alldep #
+##########
 ifeq ($(DO_ALLDEP),1)
 .EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
 endif # DO_ALLDEP
