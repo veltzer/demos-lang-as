@@ -6,9 +6,9 @@ DO_MKDBG?=0
 # should we depend on the Makefile itself?
 DO_ALLDEP:=1
 
-#############
-# variables #
-#############
+########
+# code #
+########
 SOURCES=$(shell find src -type f -and -name "*.s")
 OBJECTS=$(addsuffix .o,$(basename $(SOURCES)))
 BINARIES=$(addsuffix .elf,$(basename $(SOURCES)))
@@ -25,9 +25,6 @@ SOURCES_64=$(shell find src_64 -type f -and -name "*.S")
 OBJECTS_64=$(addsuffix .o,$(basename $(SOURCES_64)))
 BINARIES_64=$(addsuffix .elf,$(basename $(SOURCES_64)))
 
-########
-# code #
-########
 # silent stuff
 ifeq ($(DO_MKDBG),1)
 Q:=
@@ -73,9 +70,9 @@ debug:
 	$(info BINARIES_64 is $(BINARIES_64))
 	$(info ALL is $(ALL))
 
-#################
-# pattern rules #
-#################
+############
+# patterns #
+############
 $(OBJECTS): %.o: %.s
 	$(info doing [$@])
 	$(Q)gcc -c $< -o $@
