@@ -16,4 +16,4 @@ Demos of writing code in GNU assembler language.
 
 chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
-Mark Veltzer, Copyright © 2020, 2021, 2022, 2023, 2024
+Mark Veltzer, Copyright © 2020, 2021, 2022, 2023, 2024, 2025
