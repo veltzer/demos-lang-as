@@ -5,6 +5,14 @@
 DO_MKDBG?=0
 # should we depend on the Makefile itself?
 DO_ALLDEP:=1
+# do src?
+DO_SRC:=1
+# do src no c?
+DO_SRC_NO_C:=1
+# do src_32?
+DO_SRC_32:=0
+# do src_64?
+DO_SRC_64:=1
 
 ########
 # code #
@@ -34,8 +42,23 @@ Q:=@
 #.SILENT:
 endif # DO_MKDBG
 
-# sources from the git perspective
-ALL:=$(BINARIES) $(BINARIES_NO_C) $(BINARIES_32) $(BINARIES_64)
+ALL:=
+
+ifeq ($(DO_SRC),1)
+ALL+=$(BINARIES)
+endif # DO_SRC
+
+ifeq ($(DO_SRC_NO_C),1)
+ALL+=$(BINARIES_NO_C)
+endif # DO_SRC_NO_C
+
+ifeq ($(DO_SRC_32),1)
+ALL+=$(BINARIES_32)
+endif # DO_SRC_32
+
+ifeq ($(DO_SRC_64),1)
+ALL+=$(BINARIES_64)
+endif # DO_SRC_64
 
 #########
 # rules #

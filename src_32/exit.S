@@ -4,8 +4,8 @@
  * and see the return code coming up ok...
  */
 
-#include <asm/unistd.h>
-#include <syscall.h>
+//#include <asm/unistd.h>
+//#include <syscall.h>
 
 .text
 .global _start
