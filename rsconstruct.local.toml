@@ -22,7 +22,10 @@ src_extensions = [".S"]
 cflags = ["-static", "-m64"]
 ldflags = ["-static", "-m64", "-nostdlib"]
 
-[processor.explicit.src_no_c]
+[processor.generator.src_no_c]
 command = "scripts/asm_link_ld.py"
 src_dirs = ["src_no_c"]
 src_extensions = [".s"]
+output_dir = "out"
+output_extension = "elf"
+batch = false
