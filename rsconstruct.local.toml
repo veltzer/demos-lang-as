@@ -4,3 +4,25 @@
 # with load_lua (the pyanyzip pattern). The pydmt mako templates are gone.
 [processor.tera]
 src_dirs = ["tera.templates"]
+
+# The Makefile compiled the assembly demos with gcc/ld, one .elf per source,
+# keyed by directory. rsconstruct reproduces each variant:
+#   src     .s  -> gcc -z noexecstack -no-pie   (one-shot assemble+link)
+#   src_64  .S  -> gcc -static -m64 -nostdlib
+#   src_no_c .s -> gcc -c then bare ld (no crt) -- needs the two-step wrapper
+# src_32 was DO_SRC_32:=0 in the Makefile (off), so it is not built.
+[processor.cc_single_file.src]
+src_dirs = ["src"]
+src_extensions = [".s"]
+ldflags = ["-z", "noexecstack", "-no-pie"]
+
+[processor.cc_single_file.src64]
+src_dirs = ["src_64"]
+src_extensions = [".S"]
+cflags = ["-static", "-m64"]
+ldflags = ["-static", "-m64", "-nostdlib"]
+
+[processor.explicit.src_no_c]
+command = "scripts/asm_link_ld.py"
+src_dirs = ["src_no_c"]
+src_extensions = [".s"]
