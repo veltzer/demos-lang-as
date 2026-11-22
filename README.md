@@ -5,7 +5,7 @@
 
 description: Demos of writing code in GNU assembler language.
 
-project website: https://veltzer.github.io/demos-lang-as
+project website: <https://veltzer.github.io/demos-lang-as>
 
 author: Mark Veltzer
 
